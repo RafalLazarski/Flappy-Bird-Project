@@ -1,3 +1,4 @@
+using FlappyBird.Player;
 using UnityEngine;
 
 namespace FlappyBird.Core
@@ -6,9 +7,13 @@ namespace FlappyBird.Core
 	{
         private BaseState currentState;
 
+        [SerializeField]
+        private PlayerController playerController;
+        public PlayerController PlayerController => playerController;
+
         private void Start()
         {
-            ChangeState(new MenuState());
+            ChangeState(new GameState());
         }
 
         private void Update()
