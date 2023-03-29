@@ -11,6 +11,10 @@ namespace FlappyBird.Core
         private PlayerController playerController;
         public PlayerController PlayerController => playerController;
 
+        [SerializeField]
+        private ObstaclesController obstaclesController;
+        public ObstaclesController ObstaclesController => obstaclesController;
+
         private void Start()
         {
             ChangeState(new GameState());

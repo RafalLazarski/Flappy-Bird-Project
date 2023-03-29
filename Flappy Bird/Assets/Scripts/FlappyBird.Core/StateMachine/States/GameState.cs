@@ -8,11 +8,13 @@ namespace FlappyBird.Core
         {
             base.InitState(gameController);
             gameController.PlayerController.Init();
+            gameController.ObstaclesController.Init();
         }
 
         public override void DestroyState()
         {
             gameController.PlayerController.Dispose();
+            gameController.ObstaclesController.Dispose();
         }
 
         public override void FixedUpdateState()
