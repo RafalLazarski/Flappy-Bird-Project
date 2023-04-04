@@ -47,11 +47,20 @@ namespace FlappyBird.Player
             Vector2 finalVelocity = new Vector2(playerRB.velocity.x, yVelocity * direction);
             playerRB.velocity = finalVelocity;
 		}
-                
-
+        
         public void Dispose()
         {
             gameObject.SetActive(false);
+        }
+
+        public void OnTriggerEnter2D(Collider2D collision)
+        {
+            Debug.Log("Player tag: " + collision.tag);
+        }
+
+        public void OnCollisionEnter2D(Collision2D collision)
+        {
+            Debug.Log("Player tag: " + collision.gameObject.tag);
         }
     }
 }

@@ -1,5 +1,6 @@
 using FlappyBird.Player;
 using UnityEngine;
+using FlappyBird.Obstacles;
 
 namespace FlappyBird.Core
 {
