@@ -16,7 +16,8 @@ namespace FlappyBird.Player
 		public void Init()
 		{
 			gameObject.SetActive(true);
-		}
+            playerRB.position = Vector2.zero;
+        }
 
         public void UpdatePosition()
         {
@@ -32,8 +33,6 @@ namespace FlappyBird.Player
                 playerRB.position = new Vector2(playerRB.position.x,
                     playerRB.position.y > 0 ? -yRange : yRange);
             }
-
-
         }
 
         public void FixedUpdatePosition()
@@ -51,16 +50,6 @@ namespace FlappyBird.Player
         public void Dispose()
         {
             gameObject.SetActive(false);
-        }
-
-        public void OnTriggerEnter2D(Collider2D collision)
-        {
-            Debug.Log("Player tag: " + collision.tag);
-        }
-
-        public void OnCollisionEnter2D(Collision2D collision)
-        {
-            Debug.Log("Player tag: " + collision.gameObject.tag);
         }
     }
 }

@@ -1,11 +1,13 @@
 using FlappyBird.Player;
 using UnityEngine;
 using FlappyBird.Obstacles;
+using FlappyBird.UI;
+using UnityEngine.UI;
 
 namespace FlappyBird.Core
 {
-	public class GameController : MonoBehaviour
-	{
+    public class GameController : MonoBehaviour
+    {
         private BaseState currentState;
 
         [SerializeField]
@@ -13,12 +15,36 @@ namespace FlappyBird.Core
         public PlayerController PlayerController => playerController;
 
         [SerializeField]
+        private PlayerTriggerHandler triggerHandler;
+        public PlayerTriggerHandler TriggerHandler => triggerHandler;
+
+        [SerializeField]
         private ObstaclesController obstaclesController;
         public ObstaclesController ObstaclesController => obstaclesController;
 
+        [SerializeField]
+        private GameView gameView;
+        public GameView GameView => gameView;
+
+        [SerializeField]
+        private MenuView menuView;
+        public MenuView MenuView => menuView;
+
+        [SerializeField]
+        private Button playButton;
+        public Button PlayButton => playButton;
+
+        [SerializeField]
+        private Button resetButtonInGame;
+        public Button ResetButtonInGame => resetButtonInGame;
+
+        [SerializeField]
+        private Button resetButtonInMenu;
+        public Button ResetButtonInMenu => resetButtonInMenu;
+
         private void Start()
         {
-            ChangeState(new GameState());
+            ChangeState(new MenuState());
         }
 
         private void Update()

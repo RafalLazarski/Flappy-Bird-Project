@@ -36,12 +36,6 @@ namespace FlappyBird.Obstacles
         public void Dispose()
         {
             gameObject.SetActive(false);
-            isActive = false;
-        }
-
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            Controller.ChangeState();
         }
     } 
 }

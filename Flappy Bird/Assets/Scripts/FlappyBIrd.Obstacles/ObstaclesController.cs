@@ -16,6 +16,7 @@ namespace FlappyBird.Obstacles
 
 		public void Init()
 		{
+			gameObject.SetActive(true);
 			obstaclesPool = new IObstacle[obstaclesCount];
 			for (int i = 0; i < obstaclesCount; i++)
 			{
@@ -35,6 +36,7 @@ namespace FlappyBird.Obstacles
 			{
 				obstaclesPool[i].Dispose();
 			}
+			gameObject.SetActive(false);
 		}
 
 		private IEnumerator InfiniteLoop(int i)
@@ -52,11 +54,6 @@ namespace FlappyBird.Obstacles
 				obstaclesPool[i].Init();
 				yield return new WaitForSeconds(waitingTime);
 			}
-		}
-
-		public void ChangeState()
-		{
-			Debug.Log("Dupa");
 		}
 	} 
 }

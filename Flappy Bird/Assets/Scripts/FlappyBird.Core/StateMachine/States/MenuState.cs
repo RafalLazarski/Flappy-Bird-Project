@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace FlappyBird.Core
 {
@@ -7,11 +8,20 @@ namespace FlappyBird.Core
         public override void InitState(GameController gameController)
         {
             base.InitState(gameController);
+            gameController.MenuView.ShowView();
+            gameController.PlayButton.
+                onClick.AddListener(StartNewGame);
+            gameController.ResetButtonInMenu.
+                onClick.AddListener(StartNewGame);
         }
 
         public override void DestroyState()
         {
-
+            gameController.MenuView.HideView();
+            gameController.PlayButton.
+                onClick.RemoveAllListeners();
+            gameController.ResetButtonInMenu.
+                onClick.RemoveAllListeners();
         }
 
         public override void FixedUpdateState()
@@ -22,6 +32,11 @@ namespace FlappyBird.Core
         public override void UpdateState()
         {
 
+        }
+
+        public void StartNewGame()
+        {
+            gameController.ChangeState(new GameState());
         }
     }
 }
