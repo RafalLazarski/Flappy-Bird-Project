@@ -4,7 +4,7 @@ namespace FlappyBird.Core
 {
 	public class GameState : BaseState
 	{
-        public Score currentScore;
+        public Score currentScore = new Score();
 
         public override void InitState(GameController gameController)
         {
