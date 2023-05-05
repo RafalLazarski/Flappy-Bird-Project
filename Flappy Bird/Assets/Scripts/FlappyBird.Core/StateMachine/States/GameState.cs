@@ -4,11 +4,12 @@ namespace FlappyBird.Core
 {
 	public class GameState : BaseState
 	{
-        public Score currentScore = new Score();
+        public Score Score = new Score();
 
         public override void InitState(GameController gameController)
         {
             base.InitState(gameController);
+            Score.LoadScore();
             gameController.PlayerController.Init();
             gameController.TriggerHandler.IsGameLost += CheckGameStatus;
             gameController.ObstaclesController.Init();
@@ -21,6 +22,7 @@ namespace FlappyBird.Core
 
         public override void DestroyState()
         {
+            Score.SaveScore();
             gameController.PlayerController.Dispose();
             gameController.ObstaclesController.Dispose();
             gameController.GameView.HideView();
@@ -40,6 +42,7 @@ namespace FlappyBird.Core
         public override void UpdateState()
         {
             gameController.PlayerController.UpdatePosition();
+            gameController.GameView.UpdateScore(Score);
         }
 
         public void CheckGameStatus(bool isLost)
@@ -50,7 +53,7 @@ namespace FlappyBird.Core
             }
             else
             {
-                currentScore.IncreaseScore();
+                Score.IncreaseScore();
             }
         }
 
