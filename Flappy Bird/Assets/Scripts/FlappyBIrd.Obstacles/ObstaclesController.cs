@@ -22,6 +22,7 @@ namespace FlappyBird.Obstacles
 			{
 				var obstacleGameObj = Instantiate(obstaclePrefab, transform.parent);
 				obstacleGameObj.SetActive(false);
+				obstacleGameObj.transform.parent = transform;
 				obstaclesPool[i] = obstacleGameObj.GetComponent(typeof(IObstacle)) as IObstacle;
 
 				obstaclesPool[i].Controller = this;

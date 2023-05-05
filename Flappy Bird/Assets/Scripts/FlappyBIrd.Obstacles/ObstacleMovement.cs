@@ -36,6 +36,7 @@ namespace FlappyBird.Obstacles
         public void Dispose()
         {
             gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     } 
 }

@@ -1,11 +1,10 @@
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 namespace FlappyBird.Core
 {
 	public class GameState : BaseState
 	{
-        public int score = 0;
+        public Score currentScore;
 
         public override void InitState(GameController gameController)
         {
@@ -45,14 +44,13 @@ namespace FlappyBird.Core
 
         public void CheckGameStatus(bool isLost)
         {
-            if (isLost)
+             if (isLost)
             {
                 StartNewGame();
             }
             else
             {
-                score++;
-                Debug.Log("Your score: " + score);
+                currentScore.IncreaseScore();
             }
         }
 

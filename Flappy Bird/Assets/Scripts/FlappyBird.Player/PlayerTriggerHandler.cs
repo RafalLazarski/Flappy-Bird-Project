@@ -13,7 +13,7 @@ namespace FlappyBird.Player
             {
                 IsGameLost?.Invoke(true);
             }
-            else if (collision.tag == "Score")
+             else if (collision.tag == "Score")
             {
                 IsGameLost?.Invoke(false);
             }
