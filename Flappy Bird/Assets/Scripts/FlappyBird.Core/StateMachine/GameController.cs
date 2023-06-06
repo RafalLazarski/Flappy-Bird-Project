@@ -42,6 +42,14 @@ namespace FlappyBird.Core
         private Button resetButtonInMenu;
         public Button ResetButtonInMenu => resetButtonInMenu;
 
+        [SerializeField]
+        private AudioSource gameMusic;
+        public AudioSource GameMusic => gameMusic;
+
+        [SerializeField]
+        private AudioSource gameOver;
+        public AudioSource GameOver => gameOver;
+
         private void Start()
         {
             ChangeState(new GameState(true));

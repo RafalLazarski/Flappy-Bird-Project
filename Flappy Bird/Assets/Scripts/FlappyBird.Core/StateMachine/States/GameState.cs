@@ -17,6 +17,7 @@ namespace FlappyBird.Core
             base.InitState(gameController);
             Score.LoadScore();
             gameController.TriggerHandler.IsGameLost += CheckGameStatus;
+            gameController.GameMusic.Play();
             gameController.PlayerController.Init();
             gameController.ObstaclesController.Init();
 
@@ -41,6 +42,7 @@ namespace FlappyBird.Core
             base.DestroyState();
             Score.SaveScore();
             gameController.TriggerHandler.ClearAllInputs();
+            gameController.GameMusic.Stop();
             gameController.PlayerController.Dispose();
             gameController.ObstaclesController.Dispose();
             gameController.GameView.HideView();

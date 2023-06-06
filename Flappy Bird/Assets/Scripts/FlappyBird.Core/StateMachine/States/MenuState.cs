@@ -15,6 +15,7 @@ namespace FlappyBird.Core
         public override void InitState(GameController gameController)
         {
             base.InitState(gameController);
+            gameController.GameOver.Play();
             gameController.MenuView.ShowView();
             gameController.PlayButton.
                 onClick.AddListener(StartNewGame);

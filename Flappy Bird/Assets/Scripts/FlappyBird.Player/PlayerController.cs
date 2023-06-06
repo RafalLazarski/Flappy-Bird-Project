@@ -1,3 +1,4 @@
+using FlappyBird.Core;
 using UnityEngine;
 
 namespace FlappyBird.Player
@@ -12,8 +13,11 @@ namespace FlappyBird.Player
         private float yRange = 5.7f;
         [SerializeField]
         private float maxSpeed = 10.0f;
+        [SerializeField]
+        private AudioSource jumpSound;
+        public AudioSource JumpSound => jumpSound;
 
-		public void Init()
+        public void Init()
 		{
 			gameObject.SetActive(true);
             playerRB.position = Vector2.zero;
@@ -24,6 +28,7 @@ namespace FlappyBird.Player
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 playerRB.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+                jumpSound.Play();
             }
 
             // TODO: it should be changed for trigger listeners
