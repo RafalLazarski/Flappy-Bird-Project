@@ -44,7 +44,7 @@ namespace FlappyBird.Core
 
         private void Start()
         {
-            ChangeState(new GameState());
+            ChangeState(new GameState(true));
         }
 
         private void Update()

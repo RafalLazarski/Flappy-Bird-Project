@@ -35,7 +35,7 @@ namespace FlappyBird.Core
 
         public override void StartNewGame()
         {
-            gameController.ChangeState(new GameState());
+            gameController.ChangeState(new GameState(false));
         }
     }
 }

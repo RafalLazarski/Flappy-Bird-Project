@@ -5,6 +5,12 @@ namespace FlappyBird.Core
 	public class GameState : BaseState
 	{
         public Score Score = new Score();
+        private bool isFirstStart;
+
+        public GameState(bool isFirstStart)
+        {
+            this.isFirstStart = isFirstStart;
+        }
 
         public override void InitState(GameController gameController)
         {
@@ -13,7 +19,17 @@ namespace FlappyBird.Core
             gameController.TriggerHandler.IsGameLost += CheckGameStatus;
             gameController.PlayerController.Init();
             gameController.ObstaclesController.Init();
-            gameController.GameView.ShowView();
+
+            if(isFirstStart)
+            {
+                gameController.GameView.HideView();
+                gameController.MenuView.ShowView();
+            }
+            else
+            {
+                gameController.GameView.ShowView();
+                gameController.MenuView.HideView();
+            }
             gameController.ResetButtonInGame.
                 onClick.AddListener(StartNewGame);
             gameController.ResetButtonInMenu.
@@ -46,6 +62,7 @@ namespace FlappyBird.Core
             base.UpdateState();
             gameController.PlayerController.UpdatePosition();
             gameController.GameView.UpdateScore(Score);
+            gameController.MenuView.UpdateScore(Score);
         }
 
         public override void StartNewGame()
