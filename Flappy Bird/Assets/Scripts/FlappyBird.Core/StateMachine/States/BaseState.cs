@@ -8,8 +8,10 @@ namespace FlappyBird.Core
         {
             this.gameController = gameController;
         }
-        public abstract void UpdateState();
-        public abstract void FixedUpdateState();
-        public abstract void DestroyState();
+        public virtual void UpdateState() { }
+        public virtual void FixedUpdateState() { }
+        public virtual void DestroyState() { }
+
+        public virtual void StartNewGame() { }
     } 
 }

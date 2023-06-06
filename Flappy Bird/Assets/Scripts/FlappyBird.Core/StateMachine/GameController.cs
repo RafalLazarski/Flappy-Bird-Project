@@ -44,7 +44,7 @@ namespace FlappyBird.Core
 
         private void Start()
         {
-            ChangeState(new MenuState());
+            ChangeState(new GameState());
         }
 
         private void Update()
@@ -59,8 +59,7 @@ namespace FlappyBird.Core
 
         private void OnDestroy()
         {
-            // ChangeState(null);
-            // some method to save game before shut down
+
         }
 
         public void ChangeState(BaseState newState)

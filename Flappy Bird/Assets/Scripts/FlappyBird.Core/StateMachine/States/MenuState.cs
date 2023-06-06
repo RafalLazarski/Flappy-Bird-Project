@@ -5,6 +5,13 @@ namespace FlappyBird.Core
 {
     public class MenuState : BaseState
     {
+        public Score score;
+
+        public MenuState(Score score)
+        {
+            this.score = score;
+        }
+
         public override void InitState(GameController gameController)
         {
             base.InitState(gameController);
@@ -13,10 +20,12 @@ namespace FlappyBird.Core
                 onClick.AddListener(StartNewGame);
             gameController.ResetButtonInMenu.
                 onClick.AddListener(StartNewGame);
+            gameController.MenuView.UpdateScore(score);
         }
 
         public override void DestroyState()
         {
+            base.DestroyState();
             gameController.MenuView.HideView();
             gameController.PlayButton.
                 onClick.RemoveAllListeners();
@@ -24,17 +33,7 @@ namespace FlappyBird.Core
                 onClick.RemoveAllListeners();
         }
 
-        public override void FixedUpdateState()
-        {
-
-        }
-
-        public override void UpdateState()
-        {
-
-        }
-
-        public void StartNewGame()
+        public override void StartNewGame()
         {
             gameController.ChangeState(new GameState());
         }

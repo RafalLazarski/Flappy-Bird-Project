@@ -10,8 +10,8 @@ namespace FlappyBird.Core
         {
             base.InitState(gameController);
             Score.LoadScore();
-            gameController.PlayerController.Init();
             gameController.TriggerHandler.IsGameLost += CheckGameStatus;
+            gameController.PlayerController.Init();
             gameController.ObstaclesController.Init();
             gameController.GameView.ShowView();
             gameController.ResetButtonInGame.
@@ -22,11 +22,12 @@ namespace FlappyBird.Core
 
         public override void DestroyState()
         {
+            base.DestroyState();
             Score.SaveScore();
+            gameController.TriggerHandler.ClearAllInputs();
             gameController.PlayerController.Dispose();
             gameController.ObstaclesController.Dispose();
             gameController.GameView.HideView();
-            gameController.TriggerHandler.ClearAllInputs();
             gameController.ResetButtonInGame.
                 onClick.RemoveAllListeners();
             gameController.ResetButtonInMenu.
@@ -35,19 +36,26 @@ namespace FlappyBird.Core
 
         public override void FixedUpdateState()
         {
+            base.FixedUpdateState();
             gameController.PlayerController.
                 FixedUpdatePosition();
         }
 
         public override void UpdateState()
         {
+            base.UpdateState();
             gameController.PlayerController.UpdatePosition();
             gameController.GameView.UpdateScore(Score);
         }
 
+        public override void StartNewGame()
+        {
+            gameController.ChangeState(new MenuState(Score));
+        }
+
         public void CheckGameStatus(bool isLost)
         {
-             if (isLost)
+            if (isLost)
             {
                 StartNewGame();
             }
@@ -55,11 +63,6 @@ namespace FlappyBird.Core
             {
                 Score.IncreaseScore();
             }
-        }
-
-        public void StartNewGame()
-        {
-            gameController.ChangeState(new MenuState());
         }
     } 
 }
